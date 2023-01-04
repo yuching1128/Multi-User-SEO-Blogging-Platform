@@ -15,9 +15,11 @@ const app = express();
 // database
 mongoose.set('strictQuery', true);
 mongoose
-    .connect(process.env.DATABASE_LOCAL, {})
+    .connect(process.env.DATABASE_CLOUD, {})
     .then(() => console.log("DB connected"))
-    .catch((err) => console.log("DB Error => ", err));
+    .catch(err => {
+        console.log(err);
+    });
 
 // middlewares
 app.use(morgan('dev'));
